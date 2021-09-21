@@ -12,8 +12,10 @@
 ### Setup Result Example ###
 Running `python manage.py runserver` from command line:
 - ![Screen Shot 2021-09-21 at 2 13 14 AM](https://user-images.githubusercontent.com/43322572/134120741-a5eb906e-99a6-49c2-a506-d4c29f275aa1.png)
+
 Basic "Hello" page that shows up on localhost:
 - ![Screen Shot 2021-09-21 at 2 12 32 AM](https://user-images.githubusercontent.com/43322572/134120738-d35ad6df-a352-4042-be28-48a13b3eeb6e.png)
+
 `rate_my_landlord/api/views.py` and overall file structure in VSCode:
 - ![Screen Shot 2021-09-21 at 2 13 29 AM](https://user-images.githubusercontent.com/43322572/134120742-e61049f0-8e31-4509-adc1-3446278373ee.png)
 
