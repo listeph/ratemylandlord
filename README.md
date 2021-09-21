@@ -28,7 +28,7 @@ I got my setup knowledge from this video, so feel free to watch it on your own: 
 
 ### Additional Recommended Setup for Development ###
 1. I think it's best to develop on VSCode! It has helpful extensions and is connected to Git
-1.5 download the Prettier, Python, Django, React, Javascript extensions which are helpful for linting, consistent code styling, and debugging ![Screen Shot 2021-09-21 at 2 29 36 PM](https://user-images.githubusercontent.com/43322572/134227217-a21acb96-f103-4d58-ba37-9f87d74b46e2.png)
+2. download the Prettier, Python, Django, React, Javascript extensions which are helpful for linting, consistent code styling, and debugging ![Screen Shot 2021-09-21 at 2 29 36 PM](https://user-images.githubusercontent.com/43322572/134227217-a21acb96-f103-4d58-ba37-9f87d74b46e2.png)
 
 ### Dev Instructions ###
 When you want to make changes, please do `git checkout -b [new branch name here]`, so when you do `git push` push it pushes to a separate branch. Please read up on Git or watch a short tutorial if you don't already have experience 🥺 
