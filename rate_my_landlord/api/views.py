@@ -4,5 +4,6 @@ from .models import Landlord
 from .serializers import LandlordSerializer
 
 class LandlordView(generics.ListAPIView):
+    # queryset = Landlord.objects.all().delete()
     queryset = Landlord.objects.all()
     serializer_class = LandlordSerializer
