@@ -3,12 +3,10 @@
 2. [Clone the repo](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository#cloning-a-repository)
 3. cd into the cloned `ratemylandlord` folder
 4. check Python installed by running `pip`, otherwise install python version ~3.6.5
-5. `pip install -r requirements.txt` , this should replace manually doing: 
-5.1 `pip install django djangorestframework factory_boy`
+5. `pip install -r requirements.txt` , this should replace manually doing: `pip install django djangorestframework factory_boy [... other listed dependences ...]`
 6. cd into the `rate_my_landlord` directory
 7. `python manage.py runserver`
-8. follow given url to localhost, where you should see the site!
-8.5 Check the `ratemylandlord/rate_my_landlord/api/urls.py` file for subpages. Right now for example you have to add '/home' at the end of the localhost url to see the LandlordView.
+8. follow given url to localhost, where you should see the site! (Check the `ratemylandlord/rate_my_landlord/api/urls.py` file for subpages. Right now for example you have to add '/home' at the end of the localhost url to see the LandlordView.)
 
 ### Additional Recommended Setup for Development ###
 1. I think it's best to develop on VSCode! It has helpful extensions and is connected to Git
