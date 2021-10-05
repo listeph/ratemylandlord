@@ -12,7 +12,8 @@
 
 ### Additional Recommended Setup for Development ###
 1. I think it's best to develop on VSCode! It has helpful extensions and is connected to Git
-2. download the Prettier, Python, Django, React, Javascript extensions which are helpful for linting, consistent code styling, and debugging ![Screen Shot 2021-09-21 at 2 29 36 PM](https://user-images.githubusercontent.com/43322572/134227217-a21acb96-f103-4d58-ba37-9f87d74b46e2.png)
+2. download the Prettier, Python, Django, React, Javascript extensions which are helpful for linting, consistent code styling, and debugging
+![Screen Shot 2021-09-21 at 2 29 36 PM](https://user-images.githubusercontent.com/43322572/134227217-a21acb96-f103-4d58-ba37-9f87d74b46e2.png)
 
 ### Play Around! ###
 1. you can [test making changes to `rate_my_landlord/api/views.py`](https://youtu.be/JD-age0BPVo?t=990) → saving will automatically update the page in the provided link (reload to see changes)
