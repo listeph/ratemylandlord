@@ -1,11 +1,10 @@
 from django.db import models
-from django.core.validators import MaxValueValidator, MinValueValidator; 
 
 class Landlord(models.Model):
     '''A landlord listed on the site to review.'''
     first_name = models.CharField(max_length=30);
     last_name = models.CharField(max_length=30);
-    overall_rating = models.IntegerField(blank=True, null=True, validators=[MinValueValidator(0), MaxValueValidator(10)]);
+    overall_rating = models.DecimalField(blank=True, null=True, max_digits=3, decimal_places=1);
 
 class Property(models.Model):
     '''A property associated with a landlord listed on the site.'''
