@@ -11,6 +11,7 @@
 ### Additional Recommended Setup for Development ###
 1. I think it's best to develop on VSCode! It has helpful extensions and is connected to Git
 2. download the Prettier, Python, Django, React, Javascript extensions which are helpful for linting, consistent code styling, and debugging
+
 ![Screen Shot 2021-09-21 at 2 29 36 PM](https://user-images.githubusercontent.com/43322572/134227217-a21acb96-f103-4d58-ba37-9f87d74b46e2.png)
 
 ### Play Around! ###
@@ -21,6 +22,8 @@
 1. Before making changes, make sure you have done `git pull origin main` to make sure you have the latest changes
 2. When you want to make changes, please do `git checkout -b [new branch name here]`, so when you do `git push` push it pushes to a separate branch. Please read up on Git or watch a short tutorial if you don't already have experience 🥺 
 3. To populate database with test data, run `python manage.py setup_test_data` as implemented in PR #8
+
+![Screen_Shot_2021-10-04_at_9 37 55_PM](https://user-images.githubusercontent.com/43322572/135953894-05e3f28d-b5dc-4688-af9a-232c96979e24.png)
  
  ### When Making Database Changes / Models.py Changes ###
 1. `python manage.py makemigrations`
