@@ -22,6 +22,7 @@
 ### Dev Instructions ###
 1. Before making changes, make sure you have done `git pull origin main` to make sure you have the latest changes
 2. When you want to make changes, please do `git checkout -b [new branch name here]`, so when you do `git push` push it pushes to a separate branch. Please read up on Git or watch a short tutorial if you don't already have experience 🥺 
+3. To populate database with test data, run `python manage.py setup_test_data` as implemented in PR #8
  
  ### When Making Database Changes / Models.py Changes ###
 1. `python manage.py makemigrations`
