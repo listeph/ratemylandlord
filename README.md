@@ -20,14 +20,14 @@
 
 ### Play Around! ###
 1. you can test making frontend changes to `rate_my_landlord/frontend/src/components/App.js` and viewing in the provided localhost url
-2. you can also play with our backend and view the model changes in `rate_my_landlord/api/models.py` and `rate_my_landlord/api/factory.py`, and view changes in [provided localhost url]/api/home where I have simply printed 50 instances of randomly generated landlord models
+- ![Screen Shot 2021-10-09 at 9 00 15 PM](https://user-images.githubusercontent.com/43322572/136677498-c9626074-2f81-4c21-869d-cd7df3ff1a07.png)
+4. you can also play with our backend and view the model changes in `rate_my_landlord/api/models.py` and `rate_my_landlord/api/factory.py`, and view changes in [provided localhost url]/api/home where I have simply printed 50 instances of randomly generated landlord models
+- ![Screen_Shot_2021-10-04_at_9 37 55_PM](https://user-images.githubusercontent.com/43322572/135953894-05e3f28d-b5dc-4688-af9a-232c96979e24.png)
 
 ### Dev Instructions ###
 1. Before making changes, make sure you have done `git pull origin main` to make sure you have the latest changes
 2. When you want to make changes, please do `git checkout -b [new branch name here]`, so when you do `git push` push it pushes to a separate branch. Please read up on Git or watch a short tutorial if you don't already have experience 🥺 
 3. To populate database with test data, run `python manage.py setup_test_data` as implemented in [PR #8](https://github.com/listeph/ratemylandlord/pull/8)
-
-![Screen_Shot_2021-10-04_at_9 37 55_PM](https://user-images.githubusercontent.com/43322572/135953894-05e3f28d-b5dc-4688-af9a-232c96979e24.png)
  
  ### When Making Database Changes / Models.py Changes ###
 1. `python manage.py makemigrations`
