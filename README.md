@@ -10,7 +10,7 @@
 9. run `npm run dev` which will statically compile the React code
 10. in a separate terminal, cd into the cloned `ratemylandlord` folder and into the `rate_my_landlord` directory
 11. `python manage.py runserver` which starts the localhost site
-12. follow given url to localhost, where you should see the site! (Check the `ratemylandlord/rate_my_landlord/api/urls.py` file for subpages. Right now for example you have to add '/home' at the end of the localhost url to see the LandlordView.)
+12. follow given url to localhost, and append where you should see the site!
 
 ### Additional Recommended Setup for Development ###
 1. I think it's best to develop on VSCode! It has helpful extensions and is connected to Git
