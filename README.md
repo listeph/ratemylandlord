@@ -21,7 +21,7 @@
 ### Play Around! ###
 1. you can test making frontend changes to `rate_my_landlord/frontend/src/components/App.js` and viewing in the provided localhost url
 - ![Screen Shot 2021-10-09 at 9 01 06 PM](https://user-images.githubusercontent.com/43322572/136677527-b73e6bbe-def6-4a1d-84c3-887b98944dff.png)
-2. you can also play with our backend and view the model changes in `rate_my_landlord/api/models.py` and `rate_my_landlord/api/factory.py`, and view changes in [provided localhost url]/api/home where I have simply printed 50 instances of randomly generated landlord models
+2. you can also play with our backend and view the model changes in `rate_my_landlord/api/models.py` and `rate_my_landlord/api/factory.py`, and view changes in {provided localhost url}/api/home where I have simply printed 50 instances of randomly / factory generated landlord models
 - ![Screen_Shot_2021-10-04_at_9 37 55_PM](https://user-images.githubusercontent.com/43322572/135953894-05e3f28d-b5dc-4688-af9a-232c96979e24.png)
 
 ### Dev Instructions ###
