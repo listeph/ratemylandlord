@@ -34,4 +34,5 @@
 2. `python manage.py migrate`
 
  ### When Making React Changes ###
- 1. run `npm run dev` from `rate_my_landlord/frontend` directory to statically recompile React code
+ 1. Run `npm run dev` from `rate_my_landlord/frontend` directory to statically recompile React code
+ 2. If changes do not show up in the localhost url, try clearing cache (for ex on Mac, that is `Opt + CMD + E`)
