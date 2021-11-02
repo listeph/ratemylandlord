@@ -10,3 +10,8 @@ class PropertySerializer(serializers.ModelSerializer):
     class Meta:
         model = Property
         fields = ('id', 'address', 'landlord')
+
+class CreateLandlordSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Landlord
+        fields = ('first_name', 'last_name')
