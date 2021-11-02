@@ -2,3 +2,5 @@ node_modules
 .DS_Store
 __pycache__/
 *.pyc
+*.sqlite3
+rate_my_landlord/frontend/static/frontend/*
