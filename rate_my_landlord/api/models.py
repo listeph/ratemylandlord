@@ -4,6 +4,8 @@ class Landlord(models.Model):
     '''A landlord listed on the site to review.'''
     first_name = models.CharField(max_length=30);
     last_name = models.CharField(max_length=30);
+    # null determines whether your DB will allow null values for that field
+    # blank determines whether the field will be required
     overall_rating = models.DecimalField(blank=True, null=True, max_digits=3, decimal_places=1);
 
 class Property(models.Model):
