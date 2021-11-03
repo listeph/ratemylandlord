@@ -3,6 +3,7 @@ import SearchByNamePage from './SearchByNamePage';
 import FilterByRatingsPage from './FilterByRatingsPage';
 import AddLandlordPage from './AddLandlordPage';
 import { BrowserRouter as Router, Switch, Route, Link, Redirect } from "react-router-dom";
+import LandlordDisplayPage from './LandlordDisplayPage';
 
 export default class HomePage extends Component {
     constructor(props) {
@@ -17,6 +18,7 @@ export default class HomePage extends Component {
                     <Route path='/search' component={SearchByNamePage} />
                     <Route path='/filter' component={FilterByRatingsPage} />
                     <Route path='/add' component={AddLandlordPage} />
+                    <Route path='/landlord/:id' component={LandlordDisplayPage} />
                 </Switch>
             </Router>
         );
