@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Box, Button, Grid, FormControl, TextField, Typography, Snackbar } from '@material-ui/core';
+import { Button, Grid, FormControl, TextField, Typography, Snackbar } from '@material-ui/core';
 import { Link } from "react-router-dom";
 
 export default class AddLandlordPage extends Component {
