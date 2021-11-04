@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Grid, FormHelperText, FormControl, TextField, Typography, Snackbar } from '@material-ui/core';
+import { Box, Button, Grid, FormControl, TextField, Typography, Snackbar } from '@material-ui/core';
 import { Link } from "react-router-dom";
 
 export default class AddLandlordPage extends Component {
@@ -74,7 +74,7 @@ export default class AddLandlordPage extends Component {
                 <Snackbar open={this.state.showFailureToast} autoHideDuration={6000} 
                     message="Unable to submit new landlord. Please make sure you have filled out all required fields."
                     onClose={this.hideFailureToast}></Snackbar>
-                <Grid container spacing={1}>
+                <Grid container spacing={2}>
                     <Grid item xs={12} align="center">
                         <Typography component='h4' variant="h4">
                             Add New Landlord
@@ -82,30 +82,27 @@ export default class AddLandlordPage extends Component {
                     </Grid>
                     <Grid item xs={12} align="center">
                         <FormControl>
-                            <TextField required type="string" inputProps={{style: {textAlign: "center"}}} onChange={this.handleFirstNameChange} />
-                            <FormHelperText>
-                                <div align="center">First Name</div>
-                            </FormHelperText>
+                            <TextField required type="string" 
+                                onChange={this.handleFirstNameChange} error={this.state.firstName === ""}
+                                label="First Name" placeholder="Jane"/>
                         </FormControl>
                     </Grid>
                     <Grid item xs={12} align="center">
                         <FormControl>
-                            <TextField required type="string" inputProps={{style: {textAlign: "center"}}} onChange={this.handleLastNameChange} />
-                            <FormHelperText>
-                                <div align="center">Last Name</div>
-                            </FormHelperText>
+                            <TextField required type="string" 
+                                onChange={this.handleLastNameChange} error={this.state.lastName === ""}
+                                label="Last Name" placeholder="Doe"/>
                         </FormControl>
                     </Grid>
-                    <Grid item xs={12} align="center">
-                        <Button color="primary" variant="contained" onClick={this.handleSubmit}>
-                            Submit
-                        </Button>
-                    </Grid>
-                    <Grid item xs={12} align="center">
-                        <Button color="secondary" variant="contained" to="/" component={Link}>
-                            Back
-                        </Button>
-                    </Grid>
+                        <Grid item xs={12} align="center">
+                            <Button color="primary" variant="outlined" to="/" component={Link}>
+                                Back
+                            </Button>
+                            &nbsp;
+                            <Button color="primary" variant="contained" onClick={this.handleSubmit} sx={{ m: 0.5 }}>
+                                Submit
+                            </Button>
+                        </Grid>
                 </Grid>
             </React.Fragment>
         );
