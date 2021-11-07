@@ -14,12 +14,27 @@ class LandlordView(generics.ListAPIView):
     queryset = Landlord.objects.all()
     serializer_class = LandlordSerializer
 
+class GetLandlord(APIView):
+     serializer_class = LandlordSerializer
+     lookup_url_kwarg = 'id'
+
+     def get(self, request, format=None):
+          id = request.GET.get(self.lookup_url_kwarg)
+          if id != None:
+               landlord = Landlord.objects.filter(id=id)
+               if len(landlord) > 0:
+                    data = LandlordSerializer(landlord[0]).data
+                    return Response(data, status=status.HTTP_200_OK)
+               return Response({'Landlord Not Found': 'Invalid ID'}, status=status.HTTP_404_NOT_FOUND)
+          return Response({'Bad Request': 'ID parameter not found in request'}, status=status.HTTP_400_BAD_REQUEST)
+
+
 # APIView has default get and post methods that we can override
 class CreateLandlordView(APIView):
      serializer_class = CreateLandlordSerializer
      # Handles a post request from frontend
      def post(self, request, format=None):
-          serializer = self.serializer_class(data= request.data)
+          serializer = self.serializer_class(data=request.data)
           if serializer.is_valid():
                landlord_first_name = serializer.data.get('first_name')
                landlord_last_name = serializer.data.get('last_name')

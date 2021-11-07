@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Grid, FormHelperText, FormControl, FormControlLabel, Radio, RadioGroup, TextField, Typography } from '@material-ui/core';
+import { Button, Grid, FormControl, TextField, Typography, Snackbar } from '@material-ui/core';
 import { Link } from "react-router-dom";
 
 export default class AddLandlordPage extends Component {
@@ -8,6 +8,9 @@ export default class AddLandlordPage extends Component {
         this.state = {
             firstName: "",
             lastName: "",
+            showSuccessToast: false,
+            successToastMessage: "",
+            showFailureToast: false,
         };
     }
 
@@ -24,54 +27,84 @@ export default class AddLandlordPage extends Component {
     }
 
     handleSubmit = () => {
-        const requestOptions = {
-            method: 'POST',
-            headers: {'Content-Type': 'application/json'},
-            body: JSON.stringify({
-                first_name: this.state.firstName,
-                last_name: this.state.lastName,
+        const { firstName, lastName } = this.state;
+        if (firstName === "" || lastName === "") {
+            this.setState({
+                showFailureToast: true,
             })
-        };
-        fetch("api/create-landlord", requestOptions)
-            .then((response) => response.json())
-            .then((data) => console.log(data));
+        } else {
+            const requestOptions = {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({
+                    first_name: this.state.firstName,
+                    last_name: this.state.lastName,
+                })
+            };
+            fetch("api/create-landlord", requestOptions)
+                .then((response) => response.json())
+                .then((data) => this.showSuccessToast(data));
+        }
+    }
+
+    showSuccessToast = (data) => {
+        const { firstName, lastName } = this.state;
+        this.setState({
+            showSuccessToast: true,
+            successToastMessage: "Successfully submitted landlord " + firstName + " " + lastName,
+        })
+    }
+
+    hideSuccessToast = () => {
+        this.setState({
+            showSuccessToast: false,
+        })
+    }
+    hideFailureToast = () => {
+        this.setState({
+            showFailureToast: false,
+        })
     }
 
     render() {
         return (
-            <Grid container spacing={1}>
-                <Grid item xs={12} align="center">
-                    <Typography component='h4' variant="h4">
-                        Add New Landlord
-                    </Typography>
+            <React.Fragment>
+                <Snackbar open={this.state.showSuccessToast} autoHideDuration={6000} 
+                    message={this.state.successToastMessage} onClose={this.hideSuccessToast}/>
+                <Snackbar open={this.state.showFailureToast} autoHideDuration={6000} 
+                    message="Unable to submit new landlord. Please make sure you have filled out all required fields."
+                    onClose={this.hideFailureToast}></Snackbar>
+                <Grid container spacing={2}>
+                    <Grid item xs={12} align="center">
+                        <Typography component='h4' variant="h4">
+                            Add New Landlord
+                        </Typography>
+                    </Grid>
+                    <Grid item xs={12} align="center">
+                        <FormControl>
+                            <TextField required type="string" 
+                                onChange={this.handleFirstNameChange} error={this.state.firstName === ""}
+                                label="First Name" placeholder="Jane"/>
+                        </FormControl>
+                    </Grid>
+                    <Grid item xs={12} align="center">
+                        <FormControl>
+                            <TextField required type="string" 
+                                onChange={this.handleLastNameChange} error={this.state.lastName === ""}
+                                label="Last Name" placeholder="Doe"/>
+                        </FormControl>
+                    </Grid>
+                        <Grid item xs={12} align="center">
+                            <Button color="primary" variant="outlined" to="/" component={Link}>
+                                Back
+                            </Button>
+                            &nbsp;
+                            <Button color="primary" variant="contained" onClick={this.handleSubmit} sx={{ m: 0.5 }}>
+                                Submit
+                            </Button>
+                        </Grid>
                 </Grid>
-                <Grid item xs={12} align="center">
-                    <FormControl>
-                        <TextField required={true} type="string" inputProps={{style: {textAlign: "center"}}} onChange={this.handleFirstNameChange} />
-                        <FormHelperText>
-                            <div align="center">Landlord First Name</div>
-                        </FormHelperText>
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12} align="center">
-                    <FormControl>
-                        <TextField required={true} type="string" inputProps={{style: {textAlign: "center"}}} onChange={this.handleLastNameChange} />
-                        <FormHelperText>
-                            <div align="center">Landlord Last Name</div>
-                        </FormHelperText>
-                    </FormControl>
-                </Grid>
-                <Grid item xs={12} align="center">
-                    <Button color="primary" variant="contained" onClick={this.handleSubmit}>
-                        Submit
-                    </Button>
-                </Grid>
-                <Grid item xs={12} align="center">
-                    <Button color="secondary" variant="contained" to="/" component={Link}>
-                        Back
-                    </Button>
-                </Grid>
-            </Grid>
+            </React.Fragment>
         );
     }
 }
