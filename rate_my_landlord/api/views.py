@@ -40,6 +40,13 @@ class GetLandlordById(APIView):
                return Response({'Landlord Not Found': 'Invalid ID'}, status=status.HTTP_404_NOT_FOUND)
           return Response({'Bad Request': 'ID parameter not found in request'}, status=status.HTTP_400_BAD_REQUEST)
 
+class GetAllLandlords(APIView):
+     serializer_class = LandlordSerializer
+     def get(self, request, format=None):
+          queryset = Landlord.objects.all()
+          data = LandlordSerializer(queryset, many=True).data
+          return Response(data, status=status.HTTP_200_OK)
+
 class GetMatchingLandlords(APIView):
      serializer_class = LandlordSerializer
      lookup_url_kwarg = 'searchkey'

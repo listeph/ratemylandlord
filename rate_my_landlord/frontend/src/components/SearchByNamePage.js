@@ -9,30 +9,48 @@ export default class SearchByNamePage extends Component {
             searchResults: [],
             currSearchKey: "",
             submittedSearchKey: "",
-            noMatches: false,
+            searchError: false,
+            searchErrorMessage: "",
         }
     }
 
     onSubmitSearch = () => {
-        fetch('/api/get-matching-landlords?searchkey=' + this.state.currSearchKey)
-        .then((response) => response.json())
-        .then((data) => {
-            console.log(data);
-            console.log(data.length);
-            if (data.length === 0) {
-                this.setState({
-                    searchResults: [],
-                    noMatches: true,
-                    submittedSearchKey: this.state.currSearchKey,
-                });
-            } else {
+        const { currSearchKey } = this.state;
+        if (currSearchKey.length === 0) {
+            // If nothing entered on search bar, show all landlords
+            fetch('/api/get-all-landlords')
+            .then((response) => response.json())
+            .then((data) => {
                 this.setState({
                     searchResults: data,
-                    noMatches: false,
-                    submittedSearchKey: this.state.currSearchKey,
+                    searchError: false,
+                    searchErrorMessage: "",
+                    submittedSearchKey: currSearchKey,
                 });
-            }
-        });
+            });
+        } else {
+            fetch('/api/get-matching-landlords?searchkey=' + currSearchKey)
+            .then((response) => response.json())
+            .then((data) => {
+                // Otherwise, show all matching landlords or an error message if no matches
+                const { currSearchKey } = this.state;
+                if (data.length === 0) {
+                    this.setState({
+                        searchResults: [],
+                        searchError: true,
+                        searchErrorMessage: 'No search results found for "' + currSearchKey + '"',
+                        submittedSearchKey: currSearchKey,
+                    });
+                } else {
+                    this.setState({
+                        searchResults: data,
+                        searchError: false,
+                        searchErrorMessage: "",
+                        submittedSearchKey: currSearchKey,
+                    });
+                }
+            });
+        }
     }
 
     onEditSearch = (e) => {
@@ -61,18 +79,13 @@ export default class SearchByNamePage extends Component {
                 }}
             />
         );
-        let renderNoMatchError = (
+        let renderSearchErrorMessage = (
             <React.Fragment>
                 &emsp;
                 <Typography component='h5' variant="h5">
-                    No search results found for "{this.state.submittedSearchKey}"
+                    {this.state.searchErrorMessage}
                 </Typography>
             </React.Fragment>
-        );
-        let renderShortSearchError = (
-            <Typography component='h5' variant="h5">
-                No search results found for "{this.state.submittedSearchKey}"
-            </Typography>
         );
         let renderSearchResults = this.state.searchResults.map(
             (result) => {
@@ -92,8 +105,8 @@ export default class SearchByNamePage extends Component {
         return (
             <Grid container spacing={2}>
                 <Grid item xs={12} align="center">{renderSearchBar}</Grid>
-                <Grid item xs={12} align="center" style={{ display: this.state.noMatches ? "" : "none" }}>
-                    {renderNoMatchError}
+                <Grid item xs={12} align="center" style={{ display: this.state.searchError ? "" : "none" }}>
+                    {renderSearchErrorMessage}
                 </Grid>
                 <Grid item xs={12} align="center">
                     <List>{renderSearchResults}</List>

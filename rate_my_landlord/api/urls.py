@@ -1,9 +1,10 @@
 from django.urls import path
-from .views import GetMatchingLandlords, main, CreateLandlordView, GetLandlordById
+from .views import GetMatchingLandlords, main, CreateLandlordView, GetLandlordById, GetAllLandlords
 
 urlpatterns = [
     path('', main),
     path('create-landlord', CreateLandlordView.as_view()),
     path('get-landlord-by-id', GetLandlordById.as_view()),
+    path('get-all-landlords', GetAllLandlords.as_view()),
     path('get-matching-landlords', GetMatchingLandlords.as_view()),
 ]
