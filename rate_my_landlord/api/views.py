@@ -5,6 +5,7 @@ from .serializers import LandlordSerializer, CreateLandlordSerializer
 from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
+from fuzzywuzzy import fuzz
 
 
 def main(request):
@@ -25,7 +26,7 @@ class CreateLandlordView(APIView):
           return Response(LandlordSerializer(new_landlord).data, status=status.HTTP_201_CREATED)
 
 # APIView has default get and post methods that we can override
-class GetLandlord(APIView):
+class GetLandlordById(APIView):
      serializer_class = LandlordSerializer
      lookup_url_kwarg = 'id'
      # Handles a get request from frontend
@@ -39,9 +40,17 @@ class GetLandlord(APIView):
                return Response({'Landlord Not Found': 'Invalid ID'}, status=status.HTTP_404_NOT_FOUND)
           return Response({'Bad Request': 'ID parameter not found in request'}, status=status.HTTP_400_BAD_REQUEST)
 
-class GetAllLandlords(APIView):
-    serializer_class = LandlordSerializer
-    def get(self, request, format=None):
-         queryset = Landlord.objects.all()
-         data = LandlordSerializer(queryset, many=True).data
-         return Response(data, status=status.HTTP_200_OK)
+class GetMatchingLandlords(APIView):
+     serializer_class = LandlordSerializer
+     lookup_url_kwarg = 'searchkey'
+     def get(self, request, format=None):
+          searchKey = request.GET.get(self.lookup_url_kwarg)
+          queryset = filter(
+               lambda landlord: fuzz.partial_ratio(
+                         landlord.first_name.lower() + " " + landlord.last_name.lower(),
+                         searchKey.lower()
+                    ) > 80,
+               Landlord.objects.all()
+          )
+          data = LandlordSerializer(queryset, many=True).data
+          return Response(data, status=status.HTTP_200_OK)

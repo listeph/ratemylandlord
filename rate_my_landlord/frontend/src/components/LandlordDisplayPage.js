@@ -12,7 +12,7 @@ export default class LandlordDisplayPage extends Component {
     }
 
     getLandlordDetails = () => {
-        fetch('/api/get-landlord?id=' + this.landlordID)
+        fetch('/api/get-landlord-by-id?id=' + this.landlordID)
             .then((response) => response.json())
             .then((data) => this.setState({
                 firstName: data.first_name,
