@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import status
-from .models import Landlord
-from .serializers import LandlordSerializer
+from .models import Landlord, Review
+from .serializers import LandlordSerializer, ReviewSerializer
 from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -60,4 +60,11 @@ class GetMatchingLandlords(APIView):
                Landlord.objects.all().order_by('first_name','last_name')
           )
           data = LandlordSerializer(queryset, many=True).data
+          return Response(data, status=status.HTTP_200_OK)
+
+class GetAllReviews(APIView):
+     serializer_class = ReviewSerializer
+     def get(self, request, format=None):
+          queryset = Review.objects.all()
+          data = ReviewSerializer(queryset, many=True).data
           return Response(data, status=status.HTTP_200_OK)

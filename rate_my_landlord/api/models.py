@@ -10,7 +10,6 @@ class Review(models.Model):
     '''A review associated with a landlord on the site.'''
     reviewer_name = models.CharField(max_length=60)
     created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
     landlord = models.ForeignKey(Landlord, on_delete=models.CASCADE)
     safety_rating = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])
     responsiveness_rating = models.IntegerField(validators=[MinValueValidator(0), MaxValueValidator(10)])

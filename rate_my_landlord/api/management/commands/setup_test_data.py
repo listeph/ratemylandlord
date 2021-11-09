@@ -3,10 +3,12 @@ from django.core.management.base import BaseCommand
 
 from api.models import Landlord
 from api.factory import (
-    LandlordFactory
+    LandlordFactory,
+    ReviewFactory
 )
 
 NUM_LANDLORDS = 50
+NUM_REVIEWS = 150
 
 class Command(BaseCommand):
     help = "Generates test data"
@@ -21,3 +23,5 @@ class Command(BaseCommand):
         self.stdout.write("Creating new data...")
         for _ in range(NUM_LANDLORDS):
             landlord = LandlordFactory()
+        for _ in range(NUM_REVIEWS):
+            review = ReviewFactory()
