@@ -43,7 +43,7 @@ class GetLandlordById(APIView):
 class GetAllLandlords(APIView):
      serializer_class = LandlordSerializer
      def get(self, request, format=None):
-          queryset = Landlord.objects.all()
+          queryset = Landlord.objects.all().order_by('first_name','last_name')
           data = LandlordSerializer(queryset, many=True).data
           return Response(data, status=status.HTTP_200_OK)
 
@@ -57,7 +57,7 @@ class GetMatchingLandlords(APIView):
                          landlord.first_name.lower() + " " + landlord.last_name.lower(),
                          searchKey.lower()
                     ) > 80,
-               Landlord.objects.all()
+               Landlord.objects.all().order_by('first_name','last_name')
           )
           data = LandlordSerializer(queryset, many=True).data
           return Response(data, status=status.HTTP_200_OK)

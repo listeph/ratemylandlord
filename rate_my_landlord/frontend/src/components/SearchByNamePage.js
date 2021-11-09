@@ -81,7 +81,6 @@ export default class SearchByNamePage extends Component {
         );
         let renderSearchErrorMessage = (
             <React.Fragment>
-                &emsp;
                 <Typography component='h5' variant="h5">
                     {this.state.searchErrorMessage}
                 </Typography>
@@ -108,7 +107,8 @@ export default class SearchByNamePage extends Component {
                 <Grid item xs={12} align="center" style={{ display: this.state.searchError ? "" : "none" }}>
                     {renderSearchErrorMessage}
                 </Grid>
-                <Grid item xs={12} align="center">
+                &emsp;
+                <Grid item xs={12} align="center" style={{maxHeight: "300px", overflowY: "scroll"}}>
                     <List>{renderSearchResults}</List>
                 </Grid>
             </Grid>
