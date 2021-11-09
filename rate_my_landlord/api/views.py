@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import status
 from .models import Landlord
-from .serializers import LandlordSerializer, CreateLandlordSerializer
+from .serializers import LandlordSerializer
 from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -13,7 +13,7 @@ def main(request):
 
 # APIView has default get and post methods that we can override
 class CreateLandlordView(APIView):
-     serializer_class = CreateLandlordSerializer
+     serializer_class = LandlordSerializer
      # Handles a post request from frontend
      def post(self, request, format=None):
           serializer = self.serializer_class(data=request.data)
