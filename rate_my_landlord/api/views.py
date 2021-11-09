@@ -52,15 +52,17 @@ class GetMatchingLandlords(APIView):
      lookup_url_kwarg = 'searchkey'
      def get(self, request, format=None):
           searchKey = request.GET.get(self.lookup_url_kwarg)
-          queryset = filter(
-               lambda landlord: fuzz.partial_ratio(
-                         landlord.first_name.lower() + " " + landlord.last_name.lower(),
-                         searchKey.lower()
-                    ) > 80,
-               Landlord.objects.all().order_by('first_name','last_name')
-          )
-          data = LandlordSerializer(queryset, many=True).data
-          return Response(data, status=status.HTTP_200_OK)
+          if searchKey != None:
+               queryset = filter(
+                    lambda landlord: fuzz.partial_ratio(
+                              landlord.first_name.lower() + " " + landlord.last_name.lower(),
+                              searchKey.lower()
+                         ) > 80,
+                    Landlord.objects.all().order_by('first_name','last_name')
+               )
+               data = LandlordSerializer(queryset, many=True).data
+               return Response(data, status=status.HTTP_200_OK)
+          return Response({'Bad Request': 'searchkey parameter not found in request'}, status=status.HTTP_400_BAD_REQUEST)
 
 class GetAllReviews(APIView):
      serializer_class = ReviewSerializer
@@ -68,3 +70,17 @@ class GetAllReviews(APIView):
           queryset = Review.objects.all()
           data = ReviewSerializer(queryset, many=True).data
           return Response(data, status=status.HTTP_200_OK)
+
+class GetReviewsForLandlord(APIView):
+     serializer_class = ReviewSerializer
+     lookup_url_kwarg = 'landlordID'
+     def get(self, request, format=None):
+          givenID = request.GET.get(self.lookup_url_kwarg)
+          if givenID != None:
+               givenLandlord = Landlord.objects.get(id=givenID)
+               if givenLandlord != None:
+                    reviews = givenLandlord.review_set.all()
+                    data = ReviewSerializer(reviews, many=True).data
+                    return Response(data, status=status.HTTP_200_OK)
+               return Response({'Landlord Not Found': 'Invalid ID'}, status=status.HTTP_404_NOT_FOUND)
+          return Response({'Bad Request': 'landlordID parameter not found in request'}, status=status.HTTP_400_BAD_REQUEST)

@@ -95,7 +95,7 @@ export default class AddLandlordPage extends Component {
                         </FormControl>
                     </Grid>
                         <Grid item xs={12} align="center">
-                            <Button color="primary" variant="outlined" to="/" component={Link}>
+                            <Button color="primary" variant="outlined" to="/search" component={Link}>
                                 Back
                             </Button>
                             &nbsp;
