@@ -6,8 +6,8 @@ export default class AddLandlordPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            firstName: "",
-            lastName: "",
+            firstName: undefined,
+            lastName: undefined,
             showSuccessToast: false,
             successToastMessage: "",
             showFailureToast: false,
@@ -28,11 +28,7 @@ export default class AddLandlordPage extends Component {
 
     handleSubmit = () => {
         const { firstName, lastName } = this.state;
-        if (firstName === "" || lastName === "") {
-            this.setState({
-                showFailureToast: true,
-            })
-        } else {
+        if (firstName && lastName) {
             const requestOptions = {
                 method: 'POST',
                 headers: {'Content-Type': 'application/json'},
@@ -44,6 +40,10 @@ export default class AddLandlordPage extends Component {
             fetch("api/create-landlord", requestOptions)
                 .then((response) => response.json())
                 .then((data) => this.showSuccessToast(data));
+        } else {
+            this.setState({
+                showFailureToast: true,
+            });
         }
     }
 
@@ -95,11 +95,13 @@ export default class AddLandlordPage extends Component {
                         </FormControl>
                     </Grid>
                         <Grid item xs={12} align="center">
-                            <Button color="primary" variant="outlined" to="/search" component={Link}>
+                            <Button color="tertiary" to="/search" component={Link}>
                                 Back
                             </Button>
                             &nbsp;
-                            <Button color="primary" variant="contained" onClick={this.handleSubmit} sx={{ m: 0.5 }}>
+                            &nbsp;
+                            &nbsp;
+                            <Button color="primary" onClick={this.handleSubmit} sx={{ m: 0.5 }}>
                                 Submit
                             </Button>
                         </Grid>
