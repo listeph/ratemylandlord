@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Grid, List, ListItem, ListItemText, IconButton, InputAdornment, TextField, Typography } from '@material-ui/core';
+import { Button, Grid, List, ListItem, ListItemText, IconButton, InputAdornment, TextField, Typography } from '@material-ui/core';
 import { Search } from '@material-ui/icons';
 
 export default class SearchByNamePage extends Component {
@@ -12,6 +12,7 @@ export default class SearchByNamePage extends Component {
             searchError: false,
             searchErrorMessage: "",
         }
+        this.onSubmitSearch();
     }
 
     onSubmitSearch = () => {
@@ -81,7 +82,6 @@ export default class SearchByNamePage extends Component {
         );
         let renderSearchErrorMessage = (
             <React.Fragment>
-                &emsp;
                 <Typography component='h5' variant="h5">
                     {this.state.searchErrorMessage}
                 </Typography>
@@ -93,7 +93,7 @@ export default class SearchByNamePage extends Component {
                     <ListItem button component="a" href={"/landlord/" + result.id}>
                         <ListItemText
                             primary={
-                                <Typography component='h5' variant="h5">
+                                <Typography component='h6' variant="h6">
                                     {result.first_name + " " + result.last_name}
                                 </Typography>
                             }
@@ -108,8 +108,12 @@ export default class SearchByNamePage extends Component {
                 <Grid item xs={12} align="center" style={{ display: this.state.searchError ? "" : "none" }}>
                     {renderSearchErrorMessage}
                 </Grid>
-                <Grid item xs={12} align="center">
+                &emsp;
+                <Grid item xs={12} align="center" style={{maxHeight: "550px", overflowY: "scroll"}}>
                     <List>{renderSearchResults}</List>
+                </Grid>
+                <Grid item xs={12} align="center">
+                    <Button size="small" href="/add" component="a">Can't find what you're looking for? Add a new landlord here!</Button>
                 </Grid>
             </Grid>
         );

@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import status
-from .models import Landlord
-from .serializers import LandlordSerializer, CreateLandlordSerializer
+from .models import Landlord, Review
+from .serializers import LandlordSerializer, ReviewSerializer
 from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -13,7 +13,7 @@ def main(request):
 
 # APIView has default get and post methods that we can override
 class CreateLandlordView(APIView):
-     serializer_class = CreateLandlordSerializer
+     serializer_class = LandlordSerializer
      # Handles a post request from frontend
      def post(self, request, format=None):
           serializer = self.serializer_class(data=request.data)
@@ -43,7 +43,7 @@ class GetLandlordById(APIView):
 class GetAllLandlords(APIView):
      serializer_class = LandlordSerializer
      def get(self, request, format=None):
-          queryset = Landlord.objects.all()
+          queryset = Landlord.objects.all().order_by('first_name','last_name')
           data = LandlordSerializer(queryset, many=True).data
           return Response(data, status=status.HTTP_200_OK)
 
@@ -52,12 +52,35 @@ class GetMatchingLandlords(APIView):
      lookup_url_kwarg = 'searchkey'
      def get(self, request, format=None):
           searchKey = request.GET.get(self.lookup_url_kwarg)
-          queryset = filter(
-               lambda landlord: fuzz.partial_ratio(
-                         landlord.first_name.lower() + " " + landlord.last_name.lower(),
-                         searchKey.lower()
-                    ) > 80,
-               Landlord.objects.all()
-          )
-          data = LandlordSerializer(queryset, many=True).data
+          if searchKey != None:
+               queryset = filter(
+                    lambda landlord: fuzz.partial_ratio(
+                              landlord.first_name.lower() + " " + landlord.last_name.lower(),
+                              searchKey.lower()
+                         ) > 80,
+                    Landlord.objects.all().order_by('first_name','last_name')
+               )
+               data = LandlordSerializer(queryset, many=True).data
+               return Response(data, status=status.HTTP_200_OK)
+          return Response({'Bad Request': 'searchkey parameter not found in request'}, status=status.HTTP_400_BAD_REQUEST)
+
+class GetAllReviews(APIView):
+     serializer_class = ReviewSerializer
+     def get(self, request, format=None):
+          queryset = Review.objects.all()
+          data = ReviewSerializer(queryset, many=True).data
           return Response(data, status=status.HTTP_200_OK)
+
+class GetReviewsForLandlord(APIView):
+     serializer_class = ReviewSerializer
+     lookup_url_kwarg = 'landlordID'
+     def get(self, request, format=None):
+          givenID = request.GET.get(self.lookup_url_kwarg)
+          if givenID != None:
+               givenLandlord = Landlord.objects.get(id=givenID)
+               if givenLandlord != None:
+                    reviews = givenLandlord.review_set.all()
+                    data = ReviewSerializer(reviews, many=True).data
+                    return Response(data, status=status.HTTP_200_OK)
+               return Response({'Landlord Not Found': 'Invalid ID'}, status=status.HTTP_404_NOT_FOUND)
+          return Response({'Bad Request': 'landlordID parameter not found in request'}, status=status.HTTP_400_BAD_REQUEST)
