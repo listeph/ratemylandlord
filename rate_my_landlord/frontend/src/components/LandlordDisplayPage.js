@@ -1,5 +1,6 @@
 import { Button, Card, CardContent, Grid, Typography } from '@material-ui/core';
 import React, { Component } from 'react';
+import AddReviewForm from './AddReviewForm';
 
 export default class LandlordDisplayPage extends Component {
     constructor(props) {
@@ -58,15 +59,18 @@ export default class LandlordDisplayPage extends Component {
             }
         );
         return (
-            <Grid container spacing={2}>
+            <Grid container spacing={2} style={{height: "100%"}}>
                 <Grid item xs={12} align="center">
                     <Typography component='h5' variant="h5">
-                        {this.state.firstName + " " + this.state.lastName} 
+                        Reviews for {this.state.firstName} {this.state.lastName} 
                     </Typography>
                 </Grid>
                 &emsp;
-                <Grid item xs={12} align="center" style={{maxHeight: "500px", overflowY: "scroll"}}>
+                <Grid item xs={12} align="center" style={{maxHeight: "40%", overflowY: "scroll"}}>
                    {renderReviews}
+                </Grid>
+                <Grid item xs={12} align="center" style={{maxHeight: "40%", overflowY: "scroll"}}>
+                   <AddReviewForm landlordID={this.landlordID} />
                 </Grid>
                 &emsp;
                 <Grid item xs={12} align="center">

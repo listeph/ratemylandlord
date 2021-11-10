@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Grid, FormControl, TextField, Typography, Snackbar } from '@material-ui/core';
+import { Button, Grid, TextField, Typography, Snackbar } from '@material-ui/core';
 import { Link } from "react-router-dom";
 
 export default class AddLandlordPage extends Component {
@@ -81,18 +81,14 @@ export default class AddLandlordPage extends Component {
                         </Typography>
                     </Grid>
                     <Grid item xs={12} align="center">
-                        <FormControl>
-                            <TextField required type="string" 
-                                onChange={this.handleFirstNameChange} error={this.state.firstName === ""}
-                                label="First Name" placeholder="Jane"/>
-                        </FormControl>
+                        <TextField required type="string" 
+                            onChange={this.handleFirstNameChange} error={this.state.firstName === ""}
+                            label="First Name" placeholder="Jane"/>
                     </Grid>
                     <Grid item xs={12} align="center">
-                        <FormControl>
-                            <TextField required type="string" 
-                                onChange={this.handleLastNameChange} error={this.state.lastName === ""}
-                                label="Last Name" placeholder="Doe"/>
-                        </FormControl>
+                        <TextField required type="string" 
+                            onChange={this.handleLastNameChange} error={this.state.lastName === ""}
+                            label="Last Name" placeholder="Doe"/>
                     </Grid>
                         <Grid item xs={12} align="center">
                             <Button color="tertiary" to="/search" component={Link}>

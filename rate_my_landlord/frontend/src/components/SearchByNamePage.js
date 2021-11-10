@@ -113,7 +113,7 @@ export default class SearchByNamePage extends Component {
                     <List>{renderSearchResults}</List>
                 </Grid>
                 <Grid item xs={12} align="center">
-                    <Button size="small" href="/add" component="a">Can't find what you're looking for? Add a new landlord here!</Button>
+                    <Button size="small" href="/add-landlord" component="a">Can't find what you're looking for? Add a new landlord here!</Button>
                 </Grid>
             </Grid>
         );
