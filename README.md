@@ -23,7 +23,7 @@
 3. You may need to run `pip install -r requirements.txt` (this should replace manually doing: `pip install django djangorestframework factory_boy [... other listed dependences ...]`) from the `ratemylandlord` directory if there are new dependencies. Likewise, you may need to run `npm install` from the `ratemylandlord/rate_my_landlord/frontend` directory.
 4. Run the site as you would in Setup Instructions steps 9-11
 5. You might also need to run `python manage.py makemigrations` and `python manage.py migrate` if there have been database changes -- or maybe not neccessary? not too sure about how this works with version control yettt, we'll see when you guys test
-6. To populate database with test data, run `python manage.py setup_test_data`. To delete all test data and start on a clean slate run `python manage.py empty_data`
+6. Made some custom commands to create / delete dummy data! To populate database with test data, run `python manage.py setup_test_data`. To delete all test data and start on a clean slate run `python manage.py empty_data`
 
 ### Play Around! ###
 1. You can test making frontend changes to files within `ratemylandlord/rate_my_landlord/frontend/src/components`. The url pathways are defined with the Route components in `ratemylandlord/rate_my_landlord/frontend/src/components/HomePage.js`. So for instance, to see the contents of `SearchByNamePage.js`, you would visit `{localhosturl}/search`. The changes you make should automatically reflect in the local site after you save. If changes do not show up in the localhost url, try clearing cache (for ex on Mac, that is `Opt + CMD + E`).
