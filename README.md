@@ -18,10 +18,6 @@
 
 ![Screen Shot 2021-09-21 at 2 29 36 PM](https://user-images.githubusercontent.com/43322572/134227217-a21acb96-f103-4d58-ba37-9f87d74b46e2.png)
 
-### Play Around! ###
-1. You can test making frontend changes to files within `ratemylandlord/rate_my_landlord/frontend/src/components`. The url pathways are defined with the Route components in `ratemylandlord/rate_my_landlord/frontend/src/components/HomePage.js`. So for instance, to see the contents of `SearchByNamePage.js`, you would visit `{localhosturl}/search`. The changes you make should automatically reflect in the local site after you save. If changes do not show up in the localhost url, try clearing cache (for ex on Mac, that is `Opt + CMD + E`).
-2. You can also play with our backend and view our database structure `rate_my_landlord/api/models.py`. `rate_my_landlord/api/factory.py` is where we specified random data generation logic for a model. These factories are then used within our custom commands such as `python manage.py setup_test_data`, under `ratemylandlord/rate_my_landlord/api/management/commands`. You can test each of the backend functions in `ratemylandlord/rate_my_landlord/api/views.py` by going to their corresponding paths specified in `ratemylandlord/rate_my_landlord/api/urls.py`. For instance, to test the `GetAllLandlords` function, go to `{localhost url}/get-all-landlords`.
-
 ### Dev Instructions ###
 1. Before making changes, make sure you have done `git pull origin main` to make sure you have the latest changes
 2. When you want to make changes, please do `git checkout -b [new branch name here]`, so when you do `git push` push it pushes to a separate branch.
@@ -29,7 +25,7 @@
 4. Run the site as you would in Setup Instructions steps 9-12
 5. You might also need to run `python manage.py makemigrations` and `python manage.py migrate` if there have been database changes -- not too sure about this yettt we'll see when you guys test
 6. To populate database with test data, run `python manage.py setup_test_data`. To delete all test data and start on a clean slate run `python manage.py empty_data`
- 
- ### When Making Database Changes / Models.py Changes ###
-1. `python manage.py makemigrations`
-2. `python manage.py migrate`
+
+### Play Around! ###
+1. You can test making frontend changes to files within `ratemylandlord/rate_my_landlord/frontend/src/components`. The url pathways are defined with the Route components in `ratemylandlord/rate_my_landlord/frontend/src/components/HomePage.js`. So for instance, to see the contents of `SearchByNamePage.js`, you would visit `{localhosturl}/search`. The changes you make should automatically reflect in the local site after you save. If changes do not show up in the localhost url, try clearing cache (for ex on Mac, that is `Opt + CMD + E`).
+2. You can also play with our backend and view our database structure `rate_my_landlord/api/models.py`. `rate_my_landlord/api/factory.py` is where we specified random data generation logic for a model. These factories are then used within our custom commands such as `python manage.py setup_test_data`, under `ratemylandlord/rate_my_landlord/api/management/commands`. You can test each of the backend functions in `ratemylandlord/rate_my_landlord/api/views.py` by going to their corresponding paths specified in `ratemylandlord/rate_my_landlord/api/urls.py`. For instance, to test the `GetAllLandlords` function, go to `{localhost url}/get-all-landlords`. When making database changes, run `python manage.py makemigrations` and `python manage.py migrate` to apply changes.
