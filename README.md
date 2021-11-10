@@ -19,20 +19,17 @@
 ![Screen Shot 2021-09-21 at 2 29 36 PM](https://user-images.githubusercontent.com/43322572/134227217-a21acb96-f103-4d58-ba37-9f87d74b46e2.png)
 
 ### Play Around! ###
-1. you can test making frontend changes to `rate_my_landlord/frontend/src/components/App.js` and viewing in the provided localhost url
-- ![Screen Shot 2021-10-09 at 9 01 06 PM](https://user-images.githubusercontent.com/43322572/136677527-b73e6bbe-def6-4a1d-84c3-887b98944dff.png)
-2. you can also play with our backend and view the model changes in `rate_my_landlord/api/models.py` and `rate_my_landlord/api/factory.py`, and view changes in {provided localhost url}/api/home where I have simply printed 50 instances of randomly / factory generated landlord models
-- ![Screen_Shot_2021-10-04_at_9 37 55_PM](https://user-images.githubusercontent.com/43322572/135953894-05e3f28d-b5dc-4688-af9a-232c96979e24.png)
+1. You can test making frontend changes to files within `ratemylandlord/rate_my_landlord/frontend/src/components`. The url pathways are defined within `ratemylandlord/rate_my_landlord/frontend/src/components/HomePage.js`. So for instance, to see the contents of `SearchByNamePage.js`, you would visit `{localhosturl}/search`. The changes you make should automatically reflect in the local site after you save. If changes do not show up in the localhost url, try clearing cache (for ex on Mac, that is `Opt + CMD + E`).
+2. You can also play with our backend and view our database structure `rate_my_landlord/api/models.py`. `rate_my_landlord/api/factory.py` is where we specified random data generation logic for a model. These factories are then used within our custom commands such as `python manage.py setup_test_data`, under `ratemylandlord/rate_my_landlord/api/management/commands`. You can test each of the backend functions in `ratemylandlord/rate_my_landlord/api/views.py` by going to their corresponding paths specified in `ratemylandlord/rate_my_landlord/api/urls.py`. For instance, to test the `GetAllLandlords` function, go to `{localhost url}/get-all-landlords`.
 
 ### Dev Instructions ###
 1. Before making changes, make sure you have done `git pull origin main` to make sure you have the latest changes
-2. When you want to make changes, please do `git checkout -b [new branch name here]`, so when you do `git push` push it pushes to a separate branch. Please read up on Git or watch a short tutorial if you don't already have experience 🥺 
-3. To populate database with test data, run `python manage.py setup_test_data` as implemented in [PR #8](https://github.com/listeph/ratemylandlord/pull/8)
+2. When you want to make changes, please do `git checkout -b [new branch name here]`, so when you do `git push` push it pushes to a separate branch.
+3. You may need to run `pip install -r requirements.txt` (this should replace manually doing: `pip install django djangorestframework factory_boy [... other listed dependences ...]`) from the `ratemylandlord` directory if there are new dependencies. Likewise, you may need to run `npm install` from the `ratemylandlord/rate_my_landlord/frontend` directory.
+4. Run the site as you would in Setup Instructions steps 9-12
+5. You might also need to run `python manage.py makemigrations` and `python manage.py migrate` if there have been database changes -- not too sure about this yettt we'll see when you guys test
+6. To populate database with test data, run `python manage.py setup_test_data`. To delete all test data and start on a clean slate run `python manage.py empty_data`
  
  ### When Making Database Changes / Models.py Changes ###
 1. `python manage.py makemigrations`
 2. `python manage.py migrate`
-
- ### When Making React Changes ###
- 1. Run `npm run dev` from `rate_my_landlord/frontend` directory to statically recompile React code
- 2. If changes do not show up in the localhost url, try clearing cache (for ex on Mac, that is `Opt + CMD + E`)
