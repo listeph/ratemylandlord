@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework import status
 from .models import Landlord, Review
-from .serializers import LandlordSerializer, ReviewSerializer
+from .serializers import LandlordSerializer, ReviewSerializer, CreateLandlordSerializer, CreateReviewSerializer
 from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
@@ -12,14 +12,16 @@ def main(request):
      return HttpResponse("<h1>Hello</h1>")
 
 # APIView has default get and post methods that we can override
-class CreateLandlordView(APIView):
-     serializer_class = LandlordSerializer
+class CreateLandlord(APIView):
+     serializer_class = CreateLandlordSerializer
      # Handles a post request from frontend
      def post(self, request, format=None):
           serializer = self.serializer_class(data=request.data)
           if serializer.is_valid():
                landlord_first_name = serializer.data.get('first_name')
                landlord_last_name = serializer.data.get('last_name')
+          else:
+               return Response({'Bad Request': 'couldn\'t deserialize CreateLandlord POST request'}, status=status.HTTP_400_BAD_REQUEST)
           # TODO: handle duplicate values --> what will we use to uniquely identify a landlord?
           new_landlord = Landlord(first_name=landlord_first_name, last_name=landlord_last_name)
           new_landlord.save()
@@ -84,3 +86,34 @@ class GetReviewsForLandlord(APIView):
                     return Response(data, status=status.HTTP_200_OK)
                return Response({'Landlord Not Found': 'Invalid ID'}, status=status.HTTP_404_NOT_FOUND)
           return Response({'Bad Request': 'landlordID parameter not found in request'}, status=status.HTTP_400_BAD_REQUEST)
+     
+# APIView has default get and post methods that we can override
+class CreateReview(APIView):
+     serializer_class = CreateReviewSerializer
+     lookup_url_kwarg = 'landlordID'
+     # Handles a post request from frontend
+     def post(self, request, format=None):
+          landlordID = request.GET.get(self.lookup_url_kwarg)
+          if landlordID == None:
+               return Response({'Bad Request': 'landlordID parameter not found in request', 'request': request.GET}, status=status.HTTP_400_BAD_REQUEST)
+          landlord = Landlord.objects.get(id=landlordID)
+          if landlord == None:
+               return Response({'Landlord Not Found': 'Invalid ID'}, status=status.HTTP_404_NOT_FOUND)
+          serializer = self.serializer_class(data=request.data)
+          if serializer.is_valid():
+               reviewer_name = serializer.data.get('reviewer_name')
+               safety_rating = serializer.data.get('safety_rating')
+               responsiveness_rating = serializer.data.get('responsiveness_rating')
+               transparency_rating = serializer.data.get('transparency_rating')
+               organization_rating = serializer.data.get('organization_rating')
+               student_friendliness_rating = serializer.data.get('student_friendliness_rating')
+               overall_rating = serializer.data.get('overall_rating')
+          else:
+               return Response({'Bad Request': 'couldn\'t deserialize CreateReview POST request'}, status=status.HTTP_400_BAD_REQUEST)
+          # TODO: handle duplicate values --> what will we use to uniquely identify a reviewer?
+          new_review = Review(reviewer_name=reviewer_name, landlord=landlord, safety_rating=safety_rating, 
+               responsiveness_rating=responsiveness_rating, transparency_rating=transparency_rating,
+               organization_rating=organization_rating, student_friendliness_rating=student_friendliness_rating,
+               overall_rating=overall_rating)
+          new_review.save()
+          return Response(ReviewSerializer(new_review).data, status=status.HTTP_201_CREATED)

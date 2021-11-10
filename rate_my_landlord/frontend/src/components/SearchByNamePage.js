@@ -103,17 +103,17 @@ export default class SearchByNamePage extends Component {
             }
         );
         return (
-            <Grid container spacing={2}>
+            <Grid container spacing={2} style={{height: "100%"}}>
                 <Grid item xs={12} align="center">{renderSearchBar}</Grid>
                 <Grid item xs={12} align="center" style={{ display: this.state.searchError ? "" : "none" }}>
                     {renderSearchErrorMessage}
                 </Grid>
                 &emsp;
-                <Grid item xs={12} align="center" style={{maxHeight: "550px", overflowY: "scroll"}}>
+                <Grid item xs={12} align="center" style={{maxHeight: "75%", overflowY: "scroll"}}>
                     <List>{renderSearchResults}</List>
                 </Grid>
                 <Grid item xs={12} align="center">
-                    <Button size="small" href="/add" component="a">Can't find what you're looking for? Add a new landlord here!</Button>
+                    <Button size="small" href="/add-landlord" component="a">Can't find what you're looking for? Add a new landlord here!</Button>
                 </Grid>
             </Grid>
         );

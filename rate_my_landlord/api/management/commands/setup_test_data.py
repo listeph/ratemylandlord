@@ -1,7 +1,7 @@
 from django.db import transaction
 from django.core.management.base import BaseCommand
 
-from api.models import Landlord
+from api.models import Landlord, Review
 from api.factory import (
     LandlordFactory,
     ReviewFactory
@@ -16,7 +16,7 @@ class Command(BaseCommand):
     @transaction.atomic
     def handle(self, *args, **kwargs):
         self.stdout.write("Deleting old data...")
-        models = [Landlord]
+        models = [Landlord, Review]
         for m in models:
             m.objects.all().delete()
 
