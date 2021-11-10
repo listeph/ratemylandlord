@@ -22,7 +22,7 @@
 2. When you want to make changes, please do `git checkout -b [new branch name here]`, so when you do `git push` push it pushes to a separate branch.
 3. You may need to run `pip install -r requirements.txt` (this should replace manually doing: `pip install django djangorestframework factory_boy [... other listed dependences ...]`) from the `ratemylandlord` directory if there are new dependencies. Likewise, you may need to run `npm install` from the `ratemylandlord/rate_my_landlord/frontend` directory.
 4. Run the site as you would in Setup Instructions steps 9-11
-5. You might also need to run `python manage.py makemigrations` and `python manage.py migrate` if there have been database changes -- not too sure about this yettt we'll see when you guys test
+5. You might also need to run `python manage.py makemigrations` and `python manage.py migrate` if there have been database changes -- not too sure about how this works with version control yettt, we'll see when you guys test
 6. To populate database with test data, run `python manage.py setup_test_data`. To delete all test data and start on a clean slate run `python manage.py empty_data`
 
 ### Play Around! ###
