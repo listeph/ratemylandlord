@@ -1,16 +1,21 @@
 from rest_framework import serializers
 from .models import Landlord, Review
 
+# Serializer for Landlord model used in views.py for returning POST and GET 
+# request responses for Landlord data
 class LandlordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Landlord
         fields = ('id', 'first_name', 'last_name')
 
+# Serializer for Landlord model used in views.py for the add landlord POST request handler
 class CreateLandlordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Landlord
         fields = ('first_name', 'last_name')
 
+# Serializer for Review model used in views.py for returning POST and GET 
+# request responses for Review data
 class ReviewSerializer(serializers.ModelSerializer):
     created_at = serializers.SerializerMethodField()
     class Meta:
@@ -19,10 +24,10 @@ class ReviewSerializer(serializers.ModelSerializer):
             'responsiveness_rating', 'transparency_rating', 'organization_rating',
             'student_friendliness_rating', 'overall_rating')
     def get_created_at(self, obj):
-        #TODO: turn time into 12 hr format and EST (or base timezone on user's device locale)
-        # currently displays 24 hr format UTC time
-        return obj.created_at.strftime("%m/%d/%Y, at %H:%M:%S")
+        # Convert the date_time object stored in created_at to formatted 12 hr time string
+        return obj.created_at.strftime("%m/%d/%Y, at %I:%M %p")
 
+# Serializer for Review model used in views.py for the add review POST request handler
 class CreateReviewSerializer(serializers.ModelSerializer):
     class Meta:
         model = Review
