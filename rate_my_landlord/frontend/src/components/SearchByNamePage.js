@@ -54,17 +54,11 @@ export default class SearchByNamePage extends Component {
         }
     }
 
-    onEditSearch = (e) => {
-        this.setState({
-            currSearchKey: e.target.value,
-        });
-    }
-
     render() {
         let renderSearchBar = (
             <TextField 
                 label="Search Landlords"
-                onChange={this.onEditSearch}
+                onChange={(e) => this.setState({ currSearchKey: e.target.value })}
                 onKeyDown={(e) => {if (e.key === 'Enter') this.onSubmitSearch();}}
                 InputProps={{
                     endAdornment: (
