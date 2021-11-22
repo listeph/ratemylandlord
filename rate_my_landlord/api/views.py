@@ -5,7 +5,6 @@ from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from fuzzywuzzy import fuzz
-import datetime
 from django.utils import timezone
 
 
