@@ -31,7 +31,8 @@ export default class LandlordDisplayPage extends Component {
     }
 
     render() {
-        let renderReviews = this.state.reviews.map(
+        const { reviews, firstName, lastName } = this.state;
+        let renderReviews = reviews.map(
             (review) => {
                 return (
                     <Card>
@@ -62,7 +63,7 @@ export default class LandlordDisplayPage extends Component {
             <Grid container spacing={2} style={{height: "100%"}}>
                 <Grid item xs={12} align="center">
                     <Typography component='h5' variant="h5">
-                        Reviews for {this.state.firstName} {this.state.lastName} 
+                        {reviews.length} {reviews.length === 1 ? "Review" : "Reviews"} for {firstName} {lastName} 
                     </Typography>
                 </Grid>
                 &emsp;
