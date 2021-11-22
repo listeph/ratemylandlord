@@ -34,3 +34,11 @@ class CreateReviewSerializer(serializers.ModelSerializer):
         fields = ('reviewer_name', 'safety_rating', 'responsiveness_rating',
             'transparency_rating', 'organization_rating', 'student_friendliness_rating',
             'overall_rating')
+
+# Serializer for Review model used in views.py for the filter by rating Landlord GET request handler
+class FilterByReviewSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Review
+        fields = ('overall_rating',)
+        # fields = ('safety_rating', 'responsiveness_rating', 'transparency_rating', 
+        #    'organization_rating', 'student_friendliness_rating', 'overall_rating')

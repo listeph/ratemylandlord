@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import GetAllReviews, GetMatchingLandlords, main, CreateLandlord, GetLandlordById, GetAllLandlords, GetReviewsForLandlord, CreateReview
+from .views import GetAllReviews, GetMatchingLandlords, main, CreateLandlord, GetLandlordById, GetAllLandlords, GetReviewsForLandlord, CreateReview, GetLandlordsByRating
 
 urlpatterns = [
     path('', main),
@@ -9,5 +9,6 @@ urlpatterns = [
     path('get-matching-landlords', GetMatchingLandlords.as_view()),
     path('get-all-reviews', GetAllReviews.as_view()),
     path('get-reviews-for-landlord', GetReviewsForLandlord.as_view()),
-    path('create-review', CreateReview.as_view())
+    path('create-review', CreateReview.as_view()),
+    path('filter-landlords-by-rating', GetLandlordsByRating.as_view()),
 ]
