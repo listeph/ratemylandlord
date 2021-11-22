@@ -1,4 +1,3 @@
-from django.shortcuts import render
 from rest_framework import status
 from .models import Landlord, Review
 from .serializers import LandlordSerializer, ReviewSerializer, CreateLandlordSerializer, CreateReviewSerializer
@@ -6,6 +5,8 @@ from django.http import HttpResponse
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from fuzzywuzzy import fuzz
+import datetime
+from django.utils import timezone
 
 
 def main(request):
@@ -108,12 +109,13 @@ class CreateReview(APIView):
                organization_rating = serializer.data.get('organization_rating')
                student_friendliness_rating = serializer.data.get('student_friendliness_rating')
                overall_rating = serializer.data.get('overall_rating')
+               created_at = timezone.now()
           else:
                return Response({'Bad Request': 'couldn\'t deserialize CreateReview POST request'}, status=status.HTTP_400_BAD_REQUEST)
           # TODO: handle duplicate values --> what will we use to uniquely identify a reviewer?
           new_review = Review(reviewer_name=reviewer_name, landlord=landlord, safety_rating=safety_rating, 
                responsiveness_rating=responsiveness_rating, transparency_rating=transparency_rating,
                organization_rating=organization_rating, student_friendliness_rating=student_friendliness_rating,
-               overall_rating=overall_rating)
+               overall_rating=overall_rating, created_at=created_at)
           new_review.save()
           return Response(ReviewSerializer(new_review).data, status=status.HTTP_201_CREATED)
