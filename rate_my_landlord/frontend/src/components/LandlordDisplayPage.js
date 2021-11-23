@@ -13,6 +13,7 @@ export default class LandlordDisplayPage extends Component {
             reviews: [],
         }
         this.landlordID = this.props.match.params.id;
+        this.backPage = this.props.match.params.backPage;
         this.getLandlordDetails();
     }
 
@@ -75,7 +76,7 @@ export default class LandlordDisplayPage extends Component {
                 </Grid>
                 &emsp;
                 <Grid item xs={12} align="center">
-                    <Button size="small" href="/search" component="a">Back to Search</Button>
+                    <Button size="small" href={"/" + this.backPage} component="a">Back to Search</Button>
                 </Grid>
             </Grid>
         );

@@ -6,5 +6,5 @@ urlpatterns = [
     path('search', index),
     path('filter', index),
     path('add-landlord', index),
-    path('landlord/<str:id>', index)
+    path('landlord/<str:backPage>/<str:id>', index)
 ]
