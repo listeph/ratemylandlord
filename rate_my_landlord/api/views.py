@@ -138,12 +138,6 @@ class GetLandlordsByRating(APIView):
           
           serializer = self.serializer_class(data=request.data)
           filterValue = float(request.GET.get(self.lookup_url_kwarg))
-          #TODO: allow filter by individual categories
-          # safety_rating = serializer.data.get('safety_rating')
-          # responsiveness_rating = serializer.data.get('responsiveness_rating')
-          # transparency_rating = serializer.data.get('transparency_rating')
-          # organization_rating = serializer.data.get('organization_rating')
-          # student_friendliness_rating = serializer.data.get('student_friendliness_rating')
           if filterValue == None:
                return Response({'Bad Request': 'filterValue parameter not found in GET request'}, status=status.HTTP_400_BAD_REQUEST)
           #TODO: replace by comparing to overall ratings STORED IN LANDLORD OBJ --> more efficient

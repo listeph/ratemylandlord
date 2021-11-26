@@ -6,7 +6,7 @@ from .models import Landlord, Review
 class LandlordSerializer(serializers.ModelSerializer):
     class Meta:
         model = Landlord
-        fields = ('id', 'first_name', 'last_name')
+        fields = ('id', 'first_name', 'last_name','average_overall_rating', 'review_count')
 
 # Serializer for Landlord model used in views.py for the add landlord POST request handler
 class CreateLandlordSerializer(serializers.ModelSerializer):
