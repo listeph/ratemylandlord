@@ -123,26 +123,19 @@ class CreateReview(APIView):
           new_review.save()
           return Response(ReviewSerializer(new_review).data, status=status.HTTP_201_CREATED)
 
-# Handling GET request to get all landlords in database whose names fuzzy match the given search string
+# Handling GET request to get all landlords in database whose average overall ratings (from all reviews) is
+# greater than or equal to the given filter rating value
 class GetLandlordsByRating(APIView):
      serializer_class = FilterByReviewSerializer
      lookup_url_kwarg = "filterValue"
 
-     def get(self, request, format=None):
-          def landlordFilter(landlord, given_rating):
-               overall_ratings = [review.overall_rating for review in landlord.review_set.all()]
-               if (len(overall_ratings) == 0):
-                    return False
-               av_overall_rating = round(sum(overall_ratings) / len(overall_ratings), 1)
-               return av_overall_rating >= given_rating
-          
-          serializer = self.serializer_class(data=request.data)
+     def get(self, request, format=None):          
           filterValue = float(request.GET.get(self.lookup_url_kwarg))
           if filterValue == None:
                return Response({'Bad Request': 'filterValue parameter not found in GET request'}, status=status.HTTP_400_BAD_REQUEST)
           #TODO: replace by comparing to overall ratings STORED IN LANDLORD OBJ --> more efficient
           queryset = filter(
-               lambda landlord: landlordFilter(landlord, filterValue),
+               lambda landlord: landlord.average_overall_rating >= filterValue if landlord.average_overall_rating != None else False,
                Landlord.objects.all().order_by('first_name','last_name')
           )
           data = LandlordSerializer(queryset, many=True).data
