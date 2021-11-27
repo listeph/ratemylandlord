@@ -38,7 +38,7 @@ export default class HomePage extends Component {
                     <Route path='/search' component={SearchByNamePage} />
                     <Route path='/filter' component={FilterByRatingsPage} />
                     <Route path='/add-landlord' component={AddLandlordPage} />
-                    <Route path='/landlord/:id' component={LandlordDisplayPage} />
+                    <Route path='/landlord/:backPage/:id' component={LandlordDisplayPage} />
                 </Switch>
             </Router>
         );

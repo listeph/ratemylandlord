@@ -84,7 +84,7 @@ export default class SearchByNamePage extends Component {
         let renderSearchResults = this.state.searchResults.map(
             (result) => {
                 return (
-                    <ListItem button component="a" href={"/landlord/" + result.id}>
+                    <ListItem button component="a" href={"/landlord/search/" + result.id}>
                         <ListItemText
                             primary={
                                 <Typography component='h6' variant="h6">
