@@ -1,8 +1,8 @@
 from django.test import TestCase
-from .models import Landlord, Review
+from api.models import Landlord, Review
 from django.utils import timezone
 
-class AnimalTestCase(TestCase):
+class TestAverages(TestCase):
     def setUp(self):
         Landlord.objects.create(first_name="Steph", last_name="Li")
         Landlord.objects.create(first_name="Javier", last_name="Portorreal")
