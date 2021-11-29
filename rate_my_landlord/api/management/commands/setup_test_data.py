@@ -23,5 +23,4 @@ class Command(BaseCommand):
         self.stdout.write("Creating new data...")
         for _ in range(NUM_LANDLORDS):
             landlord = LandlordFactory()
-        for _ in range(NUM_REVIEWS):
-            review = ReviewFactory()
+            ReviewFactory(landlord=landlord)

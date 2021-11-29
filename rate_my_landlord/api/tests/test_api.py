@@ -1,6 +1,4 @@
 import json
-from numpy.lib.function_base import average
-from rest_framework import serializers
 from api.factory import LandlordFactory, ReviewFactory
 from api.serializers import LandlordSerializer, ReviewSerializer 
 from django.test import TestCase
