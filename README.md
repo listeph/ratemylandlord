@@ -30,4 +30,4 @@
 2. You can also play with our backend and view our database structure `rate_my_landlord/api/models.py`. `rate_my_landlord/api/factory.py` is where we specified random data generation logic for a model. These factories are then used within our custom commands such as `python manage.py setup_test_data`, under `ratemylandlord/rate_my_landlord/api/management/commands`. You can test each of the backend functions in `ratemylandlord/rate_my_landlord/api/views.py` by going to their corresponding paths specified in `ratemylandlord/rate_my_landlord/api/urls.py`. For instance, to test the `GetAllLandlords` function, go to `{localhost url}/get-all-landlords`. When making database changes, run `python manage.py makemigrations` and `python manage.py migrate` to apply changes.
 
 ### Made Some Beginner React Tutorials (in the context of Rate My Landlord) ###
-https://drive.google.com/file/d/1auSTkR7b3J34ei1w7u39KKNl-XjlDU_8/view?usp=sharing
+https://drive.google.com/drive/u/0/folders/1-j3pl_c_45BNZmwJTDPTjvYWI8F7ugZ9
