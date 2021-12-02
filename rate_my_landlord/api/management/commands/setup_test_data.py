@@ -1,3 +1,5 @@
+import random
+
 from django.db import transaction
 from django.core.management.base import BaseCommand
 
@@ -21,7 +23,9 @@ class Command(BaseCommand):
             m.objects.all().delete()
 
         self.stdout.write("Creating new data...")
+        landlords = []
         for _ in range(NUM_LANDLORDS):
-            landlord = LandlordFactory()
+            landlords.append(LandlordFactory())
+
         for _ in range(NUM_REVIEWS):
-            review = ReviewFactory()
+            ReviewFactory(landlord=random.choice(landlords))
