@@ -4,3 +4,4 @@ __pycache__/
 *.pyc
 *.sqlite3
 rate_my_landlord/frontend/static/frontend/*
+venv/

@@ -22,8 +22,7 @@ class ReviewFactory(DjangoModelFactory):
     reviewer_name = factory.Faker('name')
     # retrieving timezone based on user's device locale
     created_at = factory.Faker('date_time', tzinfo=timezone.get_current_timezone())
-    # selecting a random Landlord from the database to be this review's foreign key
-    landlord = factory.LazyFunction(lambda: Landlord.objects.order_by('?').first())
+    landlord = factory.SubFactory(LandlordFactory)
     safety_rating = factory.LazyAttribute(lambda o: o.generated_ratings[0])
     responsiveness_rating = factory.LazyAttribute(lambda o: o.generated_ratings[1])
     transparency_rating = factory.LazyAttribute(lambda o: o.generated_ratings[2])

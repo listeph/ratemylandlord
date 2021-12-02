@@ -41,7 +41,7 @@ def update_landlord_rating(sender, **kwargs):
             landlord.average_overall_rating = instance.overall_rating
         else:
             # otherwise do math to calculate the new average
-            new_rating_sum = (landlord.average_overall_rating * landlord.review_count) + Decimal(instance.overall_rating)
+            new_rating_sum = Decimal(landlord.average_overall_rating * landlord.review_count) + Decimal(instance.overall_rating)
             landlord.average_overall_rating = new_rating_sum / (landlord.review_count + 1)
         landlord.review_count = landlord.review_count + 1
         landlord.save()
