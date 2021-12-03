@@ -18,6 +18,12 @@ html, body {
     height: 100%;
 }
 
+.Header {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
 .center {
     height: 75%;
     position: absolute;
@@ -25,3 +31,4 @@ html, body {
     left: 50%;
     transform: translate(-50%,-50%);
 }
+
