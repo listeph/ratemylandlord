@@ -11,9 +11,9 @@
 10. in a separate terminal, run `python manage.py runserver` from the `ratemylandlord/rate_my_landlord` directory, which will start the localhost site
 11. follow given url to localhost, and append where you should see the site!
 
-### Additional Recommended Setup for Development ###
-1. I think it's best to develop on VSCode! It has helpful extensions and is connected to Git
-2. download the Prettier, Python, Django, React, Javascript extensions which are helpful for linting, consistent code styling, and debugging
+### Recommended Setup ###
+1. Use VSCode: It has helpful extensions and source control GUI
+2. download the Prettier, Python, Django, React, Javascript extensions on VSCode which are helpful for linting, consistent code styling, and debugging
 
 ![Screen Shot 2021-09-21 at 2 29 36 PM](https://user-images.githubusercontent.com/43322572/134227217-a21acb96-f103-4d58-ba37-9f87d74b46e2.png)
 
@@ -31,5 +31,5 @@
 7. You can test making frontend changes to files within `ratemylandlord/rate_my_landlord/frontend/src/components`. The url pathways are defined with the Route components in `ratemylandlord/rate_my_landlord/frontend/src/components/HomePage.js`. So for instance, to see the contents of `SearchByNamePage.js`, you would visit `{localhosturl}/search`. The changes you make should automatically reflect in the local site after you save. If changes do not show up in the localhost url, try clearing cache (for ex on Mac, that is `Opt + CMD + E`).
 8. You can also play with our backend and view our database structure `rate_my_landlord/api/models.py`. `rate_my_landlord/api/factory.py` is where we specified random data generation logic for a model. These factories are then used within our custom commands such as `python manage.py setup_test_data`, under `ratemylandlord/rate_my_landlord/api/management/commands`. You can test each of the backend functions in `ratemylandlord/rate_my_landlord/api/views.py` by going to their corresponding paths specified in `ratemylandlord/rate_my_landlord/api/urls.py`. For instance, to test the `GetAllLandlords` function, go to `{localhost url}/get-all-landlords`. When making database changes, run `python manage.py makemigrations` and `python manage.py migrate` to apply changes.
 
-### Made Some Beginner React Tutorials (in the context of Rate My Landlord) ###
+### Beginner Tutorials For RateMyLandlord Development ###
 https://drive.google.com/drive/u/0/folders/1-j3pl_c_45BNZmwJTDPTjvYWI8F7ugZ9
