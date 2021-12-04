@@ -1,15 +1,14 @@
 ### Setup Instructions ###
-1. Hopefully everyone already has a linux command line (ex: WSL if you're in Windows, because idk Command Prompt lol)
-2. [Fork and clone](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the repo and add this repo as upstream (as specified in the linked documentation)
-3. cd into the cloned `ratemylandlord` folder
-4. check Python installed by running `pip`, otherwise install python version ~3.6.5
-5. `pip install -r requirements.txt` , this should replace manually doing: `pip install django djangorestframework factory_boy [... other listed dependences ...]`
-6. check that you have npm installed by typing `npm` in your terminal
-7. cd into the `rate_my_landlord/frontend` directory
-8. run `npm install` which will download the dependencies listed in `frontend/package.json`
-9. run `npm run dev` from the `ratemylandlord/rate_my_landlord/frontend` directory, which will statically compile the React code
-10. in a separate terminal, run `python manage.py runserver` from the `ratemylandlord/rate_my_landlord` directory, which will start the localhost site
-11. follow given url to localhost, and append where you should see the site!
+1. [Fork and clone](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the repo and add this repo as upstream (as specified in the linked documentation)
+2. cd into the cloned `ratemylandlord` folder
+3. check Python installed by running `pip`, otherwise install python version ~3.6.5
+4. `pip install -r requirements.txt` , this should replace manually doing: `pip install django djangorestframework factory_boy [... other listed dependences ...]`
+5. check that you have npm installed by typing `npm` in your terminal
+6. cd into the `rate_my_landlord/frontend` directory
+7. run `npm install` which will download the dependencies listed in `frontend/package.json`
+8. run `npm run dev` from the `ratemylandlord/rate_my_landlord/frontend` directory, which will statically compile the React code
+9. in a separate terminal, run `python manage.py runserver` from the `ratemylandlord/rate_my_landlord` directory, which will start the localhost site
+10. follow given url to localhost, and append where you should see the site!
 
 ### Recommended Setup ###
 1. Use VSCode
