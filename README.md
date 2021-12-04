@@ -8,7 +8,7 @@
 7. run `npm install` which will download the dependencies listed in `frontend/package.json`
 8. run `npm run dev` from the `ratemylandlord/rate_my_landlord/frontend` directory, which will statically compile the React code
 9. in a separate terminal, run `python manage.py runserver` from the `ratemylandlord/rate_my_landlord` directory, which will start the localhost site
-10. follow given url to localhost, and append where you should see the site!
+10. follow given url to localhost, where you should see the site
 
 ### Recommended Setup ###
 1. Use VSCode
