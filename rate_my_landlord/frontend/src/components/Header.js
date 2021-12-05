@@ -21,19 +21,13 @@ const useStyles = makeStyles(() => ({
 
 export default function Header() {
     const { header, logo } = useStyles();
-
-    const displayDesktop = () => {
-        return <Toolbar>{ratemylandlordLogo}</Toolbar>
-    };
-
-    const ratemylandlordLogo = (
-        <Button variant="h6" className={logo} href="/">Rate My Landlord</Button>
-    );
-
-
     return (
         <header>
-            <AppBar className={header}>{displayDesktop()}</AppBar>
+            <AppBar className={header}>
+                <Toolbar>
+                    <Button variant="h6" className={logo} href="/">Rate My Landlord</Button>
+                </Toolbar>
+            </AppBar>
         </header>
     );
 }
