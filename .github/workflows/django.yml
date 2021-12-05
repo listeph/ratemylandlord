@@ -2,7 +2,7 @@ name: Django CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ main 
   pull_request:
     branches: [ main ]
 
@@ -28,3 +28,13 @@ jobs:
     - name: Run Tests
       run: |
         python rate_my_landlord/manage.py test rate_my_landlord/
+    
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      
+      - name: Super-Linter
+        uses: github/super-linter@v4.8.4
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
