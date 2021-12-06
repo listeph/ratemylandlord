@@ -19,14 +19,14 @@ export default class App extends Component {
     render() {
         return (
             <ThemeProvider theme={appTheme}>
-                <React.Fragment>
+                <div>
                     <div className="center">
                         <HomePage />
                     </div>
                     <div className="header">
                         <Header />
                     </div>
-                </React.Fragment>
+                </div>
             </ThemeProvider>
         );
     }
