@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Button, Card, CardActions, CardContent, Slider, TextField, Typography } from '@material-ui/core';
 
 export default class AddReviewForm extends Component {
@@ -92,3 +93,7 @@ export default class AddReviewForm extends Component {
         );
     }
 }
+
+AddReviewForm.propTypes = {
+    landlordID: PropTypes.string,
+};

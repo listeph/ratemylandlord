@@ -47,7 +47,7 @@ export default class AddLandlordPage extends Component {
         }
     }
 
-    showSuccessToast = (data) => {
+    showSuccessToast = () => {
         const { firstName, lastName } = this.state;
         this.setState({
             showSuccessToast: true,
@@ -91,7 +91,7 @@ export default class AddLandlordPage extends Component {
                             label="Last Name" placeholder="Doe"/>
                     </Grid>
                         <Grid item xs={12} align="center">
-                            <Button color="tertiary" to="/search" component={Link}>
+                            <Button color="secondary" to="/search" component={Link}>
                                 Back
                             </Button>
                             &nbsp;
