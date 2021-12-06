@@ -18,6 +18,12 @@ html, body {
     height: 100%;
 }
 
+.header {
+    height: 100%;
+    position: relative;
+    width: 100%;
+}
+
 .center {
     height: 75%;
     position: absolute;
