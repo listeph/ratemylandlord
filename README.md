@@ -6,7 +6,7 @@ We have a [separate automation test repo](https://github.com/mackstey28/selenium
 ### Project Organization ###
 - Tech Stack: Django backend + React frontend
 - Design Patterns: MVC backend, state behavioral design pattern and composition frontend
-- Github Issues Tracker
+- Github serves both as our code repository and as a project management site using its built-in issues / tasks tracker
 - forking and PR's for feature development
 - coding standards enforced through: [automation tests](https://github.com/mackstey28/selenium-ratemylandlord), linting (pylint + eslint) enforced in Github Actions, and Django Unit tests also enforced in Github Actions
 
