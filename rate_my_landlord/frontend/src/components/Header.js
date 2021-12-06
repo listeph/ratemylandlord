@@ -1,13 +1,8 @@
-import { AppBar, makeStyles, Toolbar, Button, } from "@material-ui/core";
+import { AppBar, makeStyles, Toolbar, Button } from "@material-ui/core";
 import React from "react";
-import { Link as RouterLink } from "react-router-dom"
 
 const useStyles = makeStyles(() => ({
-    header: {
-        backgroundColor: "#315399",
-    },
     logo: {
-        fontFamily: "Bebas Neue, cursive",
         fontWeight: 600,
         fontSize: 20,
         color: "#FFFEFE",
@@ -23,7 +18,7 @@ export default function Header() {
     const { header, logo } = useStyles();
     return (
         <header>
-            <AppBar className={header}>
+            <AppBar color="primary">
                 <Toolbar>
                     <Button variant="h6" className={logo} href="/">Rate My Landlord</Button>
                 </Toolbar>

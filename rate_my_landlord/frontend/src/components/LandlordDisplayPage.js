@@ -47,7 +47,7 @@ export default class LandlordDisplayPage extends Component {
                             <Typography component="p">
                                 Safety Measures / Inspections Rating: {review.safety_rating}
                                 <br />
-                                Responsiveness / Timely Maitenance Rating: {review.responsiveness_rating}
+                                Responsiveness / Timely Maintenance Rating: {review.responsiveness_rating}
                                 <br />
                                 Transparency / Trustworthiness Rating: {review.transparency_rating}
                                 <br />
