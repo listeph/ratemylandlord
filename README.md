@@ -1,3 +1,8 @@
+### Project Description ###
+Have you ever wanted a terrible landlord to get their karma? When they try to blame you for breaking their already broken washer? This is the website where you can do just that by leaving them the reviews they deserve.
+
+We have a [separate automation test repo](https://github.com/mackstey28/selenium-ratemylandlord) created by Maxwell Tang.
+
 ### Setup Instructions ###
 1. [Fork and clone](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the repo and add this repo as upstream (as specified in the linked documentation)
 2. cd into the cloned `ratemylandlord` folder
