@@ -1,7 +1,14 @@
 ### Project Description ###
-Have you ever wanted a terrible landlord to get their karma? When they try to blame you for breaking their already broken washer? This is the website where you can do just that by leaving them the reviews they deserve.
+Have you ever wanted a terrible landlord to get their karma? When they try to blame you for breaking their already broken washer? This is the website where you can do just that by leaving them the reviews they deserve. Users can leave ratings for their landlords in five different categories: safety measures / inspections, responsiveness / timely maintenance, transparency / trustworthiness, organization / cleanliness, and student-friendliness. In addition to writing reviews, a student can search for a landlord either by name or by filtering them by overall ratings scores. If the user cannot find the landlord they are looking for, they can also add one to the database using the Add Landlord form linked at the bottom of the search page.
 
 We have a [separate automation test repo](https://github.com/mackstey28/selenium-ratemylandlord) created by Maxwell Tang.
+
+### Project Organization ###
+- Tech Stack: Django backend + React frontend
+- Design Patterns: MVC backend, state behavioral design pattern and composition frontend
+- Github Issues Tracker
+- forking and PR's for feature development
+- coding standards enforced through: [automation tests](https://github.com/mackstey28/selenium-ratemylandlord), linting (pylint + eslint) enforced in Github Actions, and Django Unit tests also enforced in Github Actions
 
 ### Setup Instructions ###
 1. [Fork and clone](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the repo and add this repo as upstream (as specified in the linked documentation)
