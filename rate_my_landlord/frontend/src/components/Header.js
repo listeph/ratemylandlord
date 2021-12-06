@@ -15,7 +15,7 @@ const useStyles = makeStyles(() => ({
 }));
 
 export default function Header() {
-    const { header, logo } = useStyles();
+    const { logo } = useStyles();
     return (
         <header>
             <AppBar color="primary">

@@ -1,5 +1,6 @@
 import { Button, Card, CardContent, Grid, Typography } from '@material-ui/core';
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import AddReviewForm from './AddReviewForm';
 
 export default class LandlordDisplayPage extends Component {
@@ -36,7 +37,7 @@ export default class LandlordDisplayPage extends Component {
         let renderReviews = reviews.map(
             (review) => {
                 return (
-                    <Card>
+                    <Card key={"review_" + review.id}>
                         <CardContent>
                             <Typography component='h6' variant="h6">
                                 {review.reviewer_name} • {review.overall_rating} Overall
@@ -82,3 +83,12 @@ export default class LandlordDisplayPage extends Component {
         );
     }
 }
+
+LandlordDisplayPage.propTypes = {
+    match: PropTypes.shape({
+        params: PropTypes.shape({
+            id: PropTypes.string,
+            backPage: PropTypes.string
+        })
+    }),
+};

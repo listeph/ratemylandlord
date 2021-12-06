@@ -19,7 +19,6 @@ export default class FilterByRatingsPage extends Component {
         .then((response) => response.json())
         .then((data) => {
             // Otherwise, show all matching landlords or an error message if no matches
-            const { currSearchKey } = this.state;
             if (data.length === 0) {
                 this.setState({
                     searchResults: [],
@@ -59,7 +58,7 @@ export default class FilterByRatingsPage extends Component {
         let renderSearchResults = this.state.searchResults.map(
             (result) => {
                 return (
-                    <ListItem button component="a" href={"/landlord/filter/" + result.id}>
+                    <ListItem button key={"landlord_" + result.id} component="a" href={"/landlord/filter/" + result.id}>
                         <ListItemText
                             primary={
                                 <Typography component='h6' variant="h6">
@@ -82,7 +81,7 @@ export default class FilterByRatingsPage extends Component {
                     <List>{renderSearchResults}</List>
                 </Grid>
                 <Grid item xs={12} align="center">
-                    <Button size="small" href="/add-landlord" component="a">Can't find what you're looking for? Add a new landlord here!</Button>
+                    <Button size="small" href="/add-landlord" component="a">Can&apos;t find what you&apos;re looking for? Add a new landlord here!</Button>
                 </Grid>
             </Grid>
         );

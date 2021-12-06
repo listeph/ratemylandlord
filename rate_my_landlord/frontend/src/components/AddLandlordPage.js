@@ -47,7 +47,7 @@ export default class AddLandlordPage extends Component {
         }
     }
 
-    showSuccessToast = (data) => {
+    showSuccessToast = () => {
         const { firstName, lastName } = this.state;
         this.setState({
             showSuccessToast: true,
