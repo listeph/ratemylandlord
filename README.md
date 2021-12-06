@@ -8,7 +8,7 @@ We have a [separate automation test repo](https://github.com/mackstey28/selenium
 - Design Patterns: MVC backend, state behavioral design pattern and composition frontend
 - Github serves both as our code repository and as a project management site using its built-in issues / tasks tracker
 - forking and PR's for feature development
-- coding standards enforced through: [automation tests](https://github.com/mackstey28/selenium-ratemylandlord), linting (pylint + eslint) enforced in Github Actions, and Django Unit tests also enforced in Github Actions
+- coding standards enforced through: [automation tests](https://github.com/mackstey28/selenium-ratemylandlord), linting ([pylint](https://pylint.pycqa.org/en/latest/) + [eslint](https://eslint.org)) enforced in Github Actions, and Django Unit tests also enforced in Github Actions
 
 ### Setup Instructions ###
 1. [Fork and clone](https://docs.github.com/en/get-started/quickstart/fork-a-repo) the repo and add this repo as upstream (as specified in the linked documentation)
