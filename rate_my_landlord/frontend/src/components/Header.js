@@ -20,7 +20,7 @@ export default function Header() {
         <header>
             <AppBar color="primary">
                 <Toolbar>
-                    <Button variant="h6" className={logo} href="/">Rate My Landlord</Button>
+                    <Button variant="outlined" className={logo} href="/">Rate My Landlord</Button>
                 </Toolbar>
             </AppBar>
         </header>

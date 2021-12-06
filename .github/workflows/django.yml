@@ -54,4 +54,4 @@ jobs:
     - name: Run Eslint
       run: |
         cd rate_my_landlord/frontend
-        npx eslint src/**/*.js
+        npx eslint src/components/*.js

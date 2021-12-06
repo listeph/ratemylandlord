@@ -62,7 +62,7 @@ export default class SearchByNamePage extends Component {
                 onKeyDown={(e) => {if (e.key === 'Enter') this.onSubmitSearch();}}
                 InputProps={{
                     endAdornment: (
-                        <InputAdornment>
+                        <InputAdornment position="end">
                             <IconButton 
                                 aria-label="Submit Search"
                                 onClick={this.onSubmitSearch}
